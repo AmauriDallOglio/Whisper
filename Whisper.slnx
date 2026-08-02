@@ -1,1 +1,8 @@
-<Solution />
+<Solution>
+  <Folder Name="/Nucleo/">
+    <Project Path="Whisper.Aplicacao/Whisper.Aplicacao.csproj" />
+    <Project Path="Whisper.Dominio/Whisper.Dominio.csproj" />
+    <Project Path="Whisper.Infraestrutura/Whisper.Infraestrutura.csproj" />
+  </Folder>
+  <Project Path="Whisper.Api/Whisper.Api.csproj" />
+</Solution>
