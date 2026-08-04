@@ -10,4 +10,16 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Include="Scripts/transcrever_whisper.py">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Whisper.Aplicacao\Whisper.Aplicacao.csproj" />
+    <ProjectReference Include="..\Whisper.Dominio\Whisper.Dominio.csproj" />
+    <ProjectReference Include="..\Whisper.Infraestrutura\Whisper.Infraestrutura.csproj" />
+  </ItemGroup>
+
 </Project>
