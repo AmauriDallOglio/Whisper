@@ -6,19 +6,17 @@ namespace Whisper.Api.Configuracao.Middleware
     public class ApiKeyMiddleware
     {
         private readonly RequestDelegate _next;
-        private readonly AppSettingsDto _AppSettingsDtoOptions;
-        private readonly AppSettingsDto _AppSettingsDto;
+        private readonly IOptionsMonitor<AppSettingsDto> _appSettings;
 
-        public ApiKeyMiddleware(RequestDelegate next, IOptions<AppSettingsDto> appSettingsDtoOptions, AppSettingsDto aapSettingsDto)
+        public ApiKeyMiddleware(RequestDelegate next, IOptionsMonitor<AppSettingsDto> appSettings)
         {
             _next = next;
-            _AppSettingsDtoOptions = appSettingsDtoOptions.Value;
-            _AppSettingsDto = aapSettingsDto;
+            _appSettings = appSettings;
         }
 
         public async Task InvokeAsync(HttpContext context)
         {
-            string apiKeyConfigurada = _AppSettingsDto.Seguranca.ApiKey;
+            string apiKeyConfigurada = _appSettings.CurrentValue.Seguranca.ApiKey;
             var apiKeyInformada = context.Request.Headers["X-Api-Key"].ToString();
 
             if (string.IsNullOrWhiteSpace(apiKeyConfigurada) || string.IsNullOrWhiteSpace(apiKeyInformada))
